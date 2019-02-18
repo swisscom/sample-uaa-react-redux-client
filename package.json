@@ -1,7 +1,7 @@
 {
   "name": "redux-oidc-example",
   "version": "1.0.0",
-  "description": "A small example app to demonstrate the features of redux-oidc",
+  "description": "A sample app for using the uaa service with a react redux web app (based on the respective sample app for redux-oidc)",
   "main": "dist/redux-oidc-example.js",
   "engines": {
     "node": "8.x.x",
@@ -9,12 +9,12 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && webpack",
+    "build": "rimraf dist && webpack && cp ./nginx.conf ./dist",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "prod": "cross-env NODE_ENV=production npm run ./server.js",
     "start": "node server"
   },
-  "author": "Maximilian Mantz",
+  "author": "Matthias Winzeler, Roman Ackermann, Mathis Kretz (based on code from Maximilian Mantz)",
   "license": "MIT",
   "dependencies": {
     "es6-promise": "^3.2.1",

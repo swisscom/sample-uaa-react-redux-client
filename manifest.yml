@@ -1,0 +1,8 @@
+---
+applications:
+  - name: sample-uaa-react-redux-client
+    memory: 64MB
+    buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+    path: dist
+    routes:
+      - route: sample-uaa-react-redux-client.scapp-services.swisscom.com
