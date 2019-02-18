@@ -1,23 +1,8 @@
 import store from "../store";
 
-export function loadChannels() {
+export function getHello() {
   const url =
-    "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&mine=true";
-
-  return apiRequest(url).then(result => {
-    const channels = [];
-
-    for (const channel of result.data.items) {
-      channels.push({
-        id: channel.snippet.resourceId.channelId,
-        title: channel.snippet.title,
-        description: channel.snippet.description,
-        thumbnail: channel.snippet.thumbnails.default.url
-      });
-    }
-
-    return channels;
-  });
+    "https://sso-corproot-sample-react-redux-int.scapp-services.swisscom.com/hello";
 }
 
 // a request helper which reads the access_token from the redux state and passes it in its HTTP request

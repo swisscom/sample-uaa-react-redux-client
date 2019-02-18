@@ -1,15 +1,16 @@
-import { createUserManager } from 'redux-oidc';
+import { createUserManager } from "redux-oidc";
 
 const userManagerConfig = {
-  client_id: '581912277515-8pqeloei552og7pa13iufb57iug8vu9k.apps.googleusercontent.com',
-  redirect_uri: `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}/callback`,
-  response_type: 'token id_token',
-  scope: 'openid profile https://www.googleapis.com/auth/youtube.readonly',
-  authority: 'https://accounts.google.com',
-  silent_redirect_uri: `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}/silent_renew.html`,
-  automaticSilentRenew: true,
+  client_id: "VljAInZEJUvFtC5vbd09QpyLd90N0QRrFgmNy8H8mCbIoTxyLxBH7wUdoYhPCOgU",
+  redirect_uri: `${window.location.protocol}//${window.location.hostname}${
+    window.location.port ? `:${window.location.port}` : ""
+  }/callback`,
+  response_type: "token",
+  scope: "openid roles",
+  authority: "https://sso-corproot-v2-int.scapp-services.swisscom.com",
+  automaticSilentRenew: false,
   filterProtocolClaims: true,
-  loadUserInfo: true,
+  loadUserInfo: false
 };
 
 const userManager = createUserManager(userManagerConfig);

@@ -6,3 +6,5 @@ applications:
     path: dist
     routes:
       - route: sample-uaa-react-redux-client.scapp-services.swisscom.com
+    services:
+      - sample-uaa-react-redux-client

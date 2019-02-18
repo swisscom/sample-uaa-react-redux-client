@@ -12,7 +12,7 @@ class LoginPage extends React.Component {
       <div style={styles.root}>
         <h3>Welcome to the redux-oidc sample app!</h3>
         <p>Please log in to continue</p>
-        <button onClick={this.onLoginButtonClick}>Login with Google</button>
+        <button onClick={this.onLoginButtonClick}>Login using UAA</button>
       </div>
     );
   }
