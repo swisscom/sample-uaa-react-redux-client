@@ -1,8 +1,9 @@
 import store from "../store";
 
-export function getHello() {
+export function loadData() {
   const url =
-    "https://sso-corproot-sample-react-redux-int.scapp-services.swisscom.com/hello";
+    "https://sso-corproot-sample-react-redux-int.scapp-services.swisscom.com/env";
+  return apiRequest(url);
 }
 
 // a request helper which reads the access_token from the redux state and passes it in its HTTP request

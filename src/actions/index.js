@@ -1,17 +1,16 @@
-export const LOAD_SUBSCRIPTIONS_START =
-  "redux-oidc-sample/LOAD_SUBSCRIPTIONS_START";
-export const LOAD_SUBSCRIPTIONS_SUCCESS =
-  "redux-oidc-sample/LOAD_SUBSCRIPTIONS_SUCCESS";
+export const LOAD_DATA_START = "sample-uaa-react-redux-client/LOAD_DATA_START";
+export const LOAD_DATA_SUCCESS =
+  "sample-uaa-react-redux-client/LOAD_DATA_SUCCESS";
 
-export function loadSubscriptionsStart() {
+export function loadDataStart() {
   return {
-    type: LOAD_SUBSCRIPTIONS_START
+    type: LOAD_DATA_START
   };
 }
 
-export function loadSubscriptionsSuccess(channels) {
+export function loadDataSuccess(data) {
   return {
-    type: LOAD_SUBSCRIPTIONS_SUCCESS,
-    payload: channels
+    type: LOAD_DATA_SUCCESS,
+    payload: data
   };
 }

@@ -1,8 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import { loadDataStart, loadDataSuccess } from "../actions";
+import { loadData } from "../utils/api";
 
 class MainPage extends React.Component {
-  componentWillMount() {}
+  componentWillMount() {
+    this.props.dispatch(loadDataStart());
+    loadData().then(result => {
+      this.props.dispatch(loadDataSuccess(result));
+    });
+  }
 
   render() {
     return (
