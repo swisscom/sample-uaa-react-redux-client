@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && webpack && cp ./start.sh ./dist",
+    "build": "rimraf dist && webpack && cp ./start.sh ./dist && cp ./Staticfile ./dist",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "prod": "cross-env NODE_ENV=production npm run ./server.js",
     "start": "node server"

@@ -3,7 +3,6 @@ import { Provider } from "react-redux";
 import { OidcProvider } from "redux-oidc";
 import Routes from "../routes";
 import store from "../store";
-import userManager from "../utils/userManager";
 import Root from "../components/root";
 import { connect } from "react-redux";
 import { loadConfStart, loadConfSuccess } from "../actions";
@@ -22,7 +21,7 @@ class App extends React.Component {
     if (this.props.conf.data) {
       return (
         <Provider store={store}>
-          <OidcProvider store={store} userManager={userManager}>
+          <OidcProvider store={store} userManager={this.props.usermanager}>
             <Root>
               <Routes />
             </Root>
@@ -37,7 +36,8 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    conf: state.conf.conf
+    conf: state.conf.conf,
+    usermanager: state.conf.usermanager
   };
 }
 

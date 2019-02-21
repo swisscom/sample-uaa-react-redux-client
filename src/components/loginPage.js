@@ -1,10 +1,12 @@
 import React from "react";
-import userManager from "../utils/userManager";
+import { connect } from "react-redux";
 
 class LoginPage extends React.Component {
-  onLoginButtonClick(event) {
-    event.preventDefault();
-    userManager.signinRedirect();
+  onLoginButtonClick(props) {
+    return event => {
+      event.preventDefault();
+      props.usermanager.signinRedirect();
+    };
   }
 
   render() {
@@ -12,7 +14,9 @@ class LoginPage extends React.Component {
       <div style={styles.root}>
         <h3>Welcome to the redux-oidc sample app!</h3>
         <p>Please log in to continue</p>
-        <button onClick={this.onLoginButtonClick}>Login using UAA</button>
+        <button onClick={this.onLoginButtonClick(this.props)}>
+          Login using UAA
+        </button>
       </div>
     );
   }
@@ -28,4 +32,11 @@ const styles = {
   }
 };
 
-export default LoginPage;
+function mapStateToProps(state) {
+  return {
+    conf: state.conf.conf,
+    usermanager: state.conf.usermanager
+  };
+}
+
+export default connect(mapStateToProps)(LoginPage);
