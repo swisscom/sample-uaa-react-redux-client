@@ -1,8 +1,6 @@
 import store from "../store";
 
-export function loadData() {
-  const url =
-    "https://sso-corproot-v2-sample-react-redux-api-int.scapp-services.swisscom.com/env";
+export function loadData(url) {
   return apiRequest(url);
 }
 

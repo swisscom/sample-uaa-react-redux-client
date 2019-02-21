@@ -2,24 +2,31 @@ import React from "react";
 import { connect } from "react-redux";
 import { loadDataStart, loadDataSuccess } from "../actions";
 import { loadData } from "../utils/api";
+import ReactJson from "react-json-view";
+import Spinner from "react-spinkit";
 
 class MainPage extends React.Component {
   componentWillMount() {
     this.props.dispatch(loadDataStart());
-    loadData().then(result => {
+    loadData(this.props.conf.serverUrl + "/env").then(result => {
       this.props.dispatch(loadDataSuccess(result));
     });
   }
 
   render() {
-    return (
-      <div style={styles.root}>
-        <div style={styles.title}>
-          <h3>Welcome</h3>
-          <p>This is where the backend data will be displayed.</p>
+    if (this.props.data) {
+      return (
+        <div style={styles.root}>
+          <div style={styles.title}>
+            <h3>Welcome</h3>
+            <p>This is the data returned from the resource server.</p>
+            <ReactJson src={this.props.data} />
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <Spinner />;
+    }
   }
 }
 
@@ -39,4 +46,11 @@ const styles = {
   }
 };
 
-export default connect()(MainPage);
+function mapStateToProps(state) {
+  return {
+    data: state.data.data.data,
+    conf: state.conf.conf.data
+  };
+}
+
+export default connect(mapStateToProps)(MainPage);
