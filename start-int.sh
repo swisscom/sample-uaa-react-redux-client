@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e -u
-OIDC="$(echo $VCAP_SERVICES |jq '.["corpid-2"] | .[].credentials')"
+OIDC="$(echo $VCAP_SERVICES |jq '.["corpid-2-int"] | .[].credentials')"
 APP_CONFIG="{ "\"oidc"\":$OIDC, "\"serverUrl"\": "\"$SERVER_URL"\" }"
 
 jq -n "{
