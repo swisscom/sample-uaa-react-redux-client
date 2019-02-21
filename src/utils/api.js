@@ -1,32 +1,22 @@
 import store from "../store";
 
-export function loadChannels() {
-  const url =
-    "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&mine=true";
+export function loadData(url) {
+  return apiRequest(url);
+}
 
-  return apiRequest(url).then(result => {
-    const channels = [];
-
-    for (const channel of result.data.items) {
-      channels.push({
-        id: channel.snippet.resourceId.channelId,
-        title: channel.snippet.title,
-        description: channel.snippet.description,
-        thumbnail: channel.snippet.thumbnails.default.url
-      });
-    }
-
-    return channels;
-  });
+export function loadConfig() {
+  const url = "/conf.json";
+  return apiRequest(url, "GET", false);
 }
 
 // a request helper which reads the access_token from the redux state and passes it in its HTTP request
-function apiRequest(url, method = "GET") {
-  const token = store.getState().oidc.user.access_token;
+function apiRequest(url, method = "GET", authenticated = true) {
   const headers = new Headers();
   headers.append("Accept", "application/json");
-  headers.append("Authorization", `Bearer ${token}`);
-
+  if (authenticated) {
+    const token = store.getState().oidc.user.access_token;
+    headers.append("Authorization", `Bearer ${token}`);
+  }
   const options = {
     method,
     headers
