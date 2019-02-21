@@ -39,8 +39,4 @@ const styles = {
   }
 };
 
-function mapStateToProps(state) {
-  return {};
-}
-
-export default connect(mapStateToProps)(MainPage);
+export default connect()(MainPage);

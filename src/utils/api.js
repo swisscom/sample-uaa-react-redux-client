@@ -2,17 +2,23 @@ import store from "../store";
 
 export function loadData() {
   const url =
-    "https://sso-corproot-sample-react-redux-int.scapp-services.swisscom.com/env";
+    "https://sso-corproot-v2-sample-react-redux-api-int.scapp-services.swisscom.com/env";
   return apiRequest(url);
 }
 
+export function loadConfig() {
+  const url = "/conf.json";
+  return apiRequest(url, "GET", false);
+}
+
 // a request helper which reads the access_token from the redux state and passes it in its HTTP request
-function apiRequest(url, method = "GET") {
-  const token = store.getState().oidc.user.access_token;
+function apiRequest(url, method = "GET", authenticated = true) {
   const headers = new Headers();
   headers.append("Accept", "application/json");
-  headers.append("Authorization", `Bearer ${token}`);
-
+  if (authenticated) {
+    const token = store.getState().oidc.user.access_token;
+    headers.append("Authorization", `Bearer ${token}`);
+  }
   const options = {
     method,
     headers

@@ -1,10 +1,13 @@
 ---
 applications:
   - name: sample-uaa-react-redux-client
+    env:
+      SERVER_URL: https://sso-corproot-v2-sample-react-redux-api-int.scapp-services.swisscom.com
     memory: 64MB
     buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+    command: source $HOME/public/start.sh
     path: dist
     routes:
-      - route: sample-uaa-react-redux-client.scapp-services.swisscom.com
+      - route: sso-corproot-v2-sample-react-redux-client-int.scapp-services.swisscom.com
     services:
       - sample-uaa-react-redux-client

@@ -7,7 +7,6 @@ import {
 } from "react-router-redux";
 import { createUserManager, loadUser } from "redux-oidc";
 import reducer from "./reducer";
-import userManager from "./utils/userManager";
 
 // create the middleware with the userManager
 // const oidcMiddleware = createOidcMiddleware(userManager);
@@ -27,6 +26,5 @@ const createStoreWithMiddleware = compose(
 )(createStore);
 
 const store = createStoreWithMiddleware(reducer, initialState);
-loadUser(store, userManager);
 
 export default store;
