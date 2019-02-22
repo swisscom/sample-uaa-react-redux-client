@@ -6,9 +6,7 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   devtool: "source-map",
   entry: {
-    app: ["./src/index.js"],
-    //polyfills: ["whatwg-fetch", "babel-polyfill"],
-    silentRenew: ["./silent_renew/index.js"]
+    app: ["./src/index.js"]
   },
   context: path.resolve(__dirname, "."),
   output: {
@@ -18,23 +16,13 @@ module.exports = {
   },
   stats: "errors-only",
   plugins: [
-    // new webpack.optimize.DedupePlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       chunks: ["app"],
       filename: "index.html"
     }),
-    new HtmlWebpackPlugin({
-      template: "./silent_renew/silent_renew.html",
-      chunks: ["silentRenew"],
-      filename: "silent_renew.html"
-    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: "app",
-      chunks: ["commons"]
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "silentRenew",
       chunks: ["commons"]
     })
   ],
