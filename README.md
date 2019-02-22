@@ -2,8 +2,6 @@
 
 This is a small react sample app to demonstrate the usage of the Swisscom UAA service using the implicit flow of OIDC. The code is based on [redux-oidc-example](https://github.com/maxmantz/redux-oidc-example).
 
-You will need access to the Swisscom internal instance of Cloud Foundry to use it.
-
 ## Running this sample
 Here's how you can run the example app in your own space.
 
