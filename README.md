@@ -4,7 +4,7 @@ This is a small react sample app to demonstrate the usage of the Swisscom UAA se
 
 You will need access to the Swisscom internal instance of Cloud Foundry to use it.
 
-## Running the example
+## Running this sample
 Here's how you can run the example app in your own space.
 ### Clone the repo
 ```
@@ -45,3 +45,16 @@ Push the app to Cloud Foundry
 ```
 cf push
 ```
+
+## Sample overview
+### Authorization code
+- Service provider (Spring boot): https://github.com/swisscom/sample-uaa-spring-boot-service-provider
+- Service provider (Ruby): https://github.com/swisscom/sample-uaa-ruby-service-provider
+
+### Implicit flow & Client Credentials
+- Client (VueJS): https://github.com/swisscom/sample-uaa-vue-client
+- Client (React & Redux):https://github.com/swisscom/sample-uaa-react-redux-client
+- Client (AngularJS): https://github.com/swisscom/sample-uaa-angular-client
+
+- Resource Server (Spring boot): https://github.com/swisscom/sample-uaa-spring-boot-resource-server
+- Resource Server (Ruby): https://github.com/swisscom/sample-uaa-ruby-resource-server
