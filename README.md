@@ -9,6 +9,7 @@ Here's how you can run the example app in your own space.
 To run this sample, you need to first set up a resource server, i.e. an API to which your React app will connect once it has the auth token. To achieve this you can either deploy the [Spring Boot sample](https://github.com/swisscom/sample-uaa-spring-boot-service-provider) or the [Ruby sample](https://github.com/swisscom/sample-uaa-ruby-service-provider). We will refer to the URL under which this resource server is running as `<resource server URL>`.
 
 ### Clone the repo
+Next you need to clone this repo.
 ```
 git clone https://github.com/swisscom/sample-uaa-react-redux-client.git
 ```
