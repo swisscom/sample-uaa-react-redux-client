@@ -8,7 +8,7 @@ You will need access to the Swisscom internal instance of Cloud Foundry to use i
 Here's how you can run the example app in your own space.
 
 ### Set up a resource server
-To run this sample, you need to first set up a resource server, i.e. an API to which your React app will connect once it has the auth token. To achieve this you can either deploy the [Spring Boot sample](https://github.com/swisscom/sample-uaa-spring-boot-service-provider) or the [Ruby sample](https://github.com/swisscom/sample-uaa-ruby-service-provider). We will refer the URL under which this resource server is running as `<resource server URL>`.
+To run this sample, you need to first set up a resource server, i.e. an API to which your React app will connect once it has the auth token. To achieve this you can either deploy the [Spring Boot sample](https://github.com/swisscom/sample-uaa-spring-boot-service-provider) or the [Ruby sample](https://github.com/swisscom/sample-uaa-ruby-service-provider). We will refer to the URL under which this resource server is running as `<resource server URL>`.
 
 ### Clone the repo
 ```
@@ -29,13 +29,14 @@ applications:
     routes:
       - route: <provide a route for your app>
     services:
-      - sample-uaa-react-redux-client
+      - oauth2
 ```
 
 ### Create an instance of the UAA service
-Use the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) to create an instance of the UAA service named `sample-uaa-react-redux-client`
+Use the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) to create an user provides service instance named `oauth2` for the UAA you are targeting. The parameter `redirectUris` will reference your app's route, as specified in the `manifest.yml`.
 ```
-cf create-service corpid-2-int nova sample-uaa-react-redux-client -c '{"grantTypes": ["implicit"], "redirectUris": ["https://<your app's route>/callback"], "accessTokenValidity": 14400}'
+CREDENTIALS='{"logoutEndpoint": "<uaa-url>/logout.do", "userInfoEndpoint": "<uaa-url>/userinfo", "checkTokenEndpoint": "<uaa-url>/check_token", "scope": "openid,roles,user_attributes", "grantTypes": "implicit", "redirectUris": "<your app's route>/callback", "authorizationEndpoint": "<uaa-url>/oauth/authorize", "clientId": "HwykJoWyMNmJMLe93OgFiTxeOzYVMk7ff80v7ss87FwUJKIwsyzlM6vm2YVN4u9g", "clientSecret": "null", "accessTokenValidity": "14400", "tokenEndpoint": "<uaa-url>/oauth/token"}
+cf create-user-provided-service oauth2 -p $CREDENTIALS -t
 ```
 
 ### Build the react app
