@@ -1,6 +1,6 @@
 # sample-uaa-react-redux-client
 
-This is a small react sample app to demonstrate the usage of the Swisscom UAA service using the implicit flow of OIDC. The code is based on [redux-oidc-example](https://github.com/maxmantz/redux-oidc-example).
+This is a small react sample app to demonstrate how to integrate with a UAA service using the implicit flow of OIDC. The code is based on [redux-oidc-example](https://github.com/maxmantz/redux-oidc-example).
 
 ## Running this sample
 Here's how you can run the example app in your own space.
