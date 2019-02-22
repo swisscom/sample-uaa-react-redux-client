@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e -u
-OIDC="$(echo $VCAP_SERVICES | jq '.[] | .[] | select(.name == "sample-uaa-react-redux-client") | .credentials')"
+OIDC="$(echo $VCAP_SERVICES | jq '.[] | .[] | select(.name == "oauth2") | .credentials')"
 APP_CONFIG="{ "\"oidc"\":$OIDC, "\"serverUrl"\": "\"$SERVER_URL"\" }"
 
 jq -n "{

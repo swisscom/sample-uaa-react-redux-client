@@ -10,4 +10,4 @@ applications:
     routes:
       - route: sso-corproot-v2-sample-react-redux-client.scapp-services.swisscom.com
     services:
-      - sample-uaa-react-redux-client
+      - oauth2
