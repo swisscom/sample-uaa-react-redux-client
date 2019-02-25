@@ -35,7 +35,7 @@ applications:
 Use the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) to create an user provides service instance named `oauth2` for the UAA you are targeting. The parameter `redirectUris` will reference your app's route, as specified in the `manifest.yml`.
 ```
 CREDENTIALS='{"logoutEndpoint": "<uaa-url>/logout.do", "userInfoEndpoint": "<uaa-url>/userinfo", "checkTokenEndpoint": "<uaa-url>/check_token", "scope": "openid,roles,user_attributes", "grantTypes": "implicit", "redirectUris": "<your app's route>/callback", "authorizationEndpoint": "<uaa-url>/oauth/authorize", "clientId": "HwykJoWyMNmJMLe93OgFiTxeOzYVMk7ff80v7ss87FwUJKIwsyzlM6vm2YVN4u9g", "clientSecret": "null", "accessTokenValidity": "14400", "tokenEndpoint": "<uaa-url>/oauth/token"}
-cf create-user-provided-service oauth2 -p $CREDENTIALS -t
+cf create-user-provided-service oauth2 -p $CREDENTIALS -t oauth2
 ```
 
 ### Build the react app
