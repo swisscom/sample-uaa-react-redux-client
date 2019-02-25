@@ -32,7 +32,7 @@ applications:
 ```
 
 ### Create an instance of the UAA service
-Use the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) to create an user provides service instance named `oauth2` for the UAA you are targeting. The parameter `redirectUris` will reference your app's route, as specified in the `manifest.yml`.
+Use the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) to create a user provided service instance for the UAA you are targeting. The parameter `redirectUris` will reference your app's route, as specified in the `manifest.yml`. Be sure to tag your service instance with `oauth2` as shown below, so that the the OIDC enpoints of the instace can be picked up by the service binding an served to the browser app.
 ```
 CREDENTIALS='{"logoutEndpoint": "<uaa-url>/logout.do", "userInfoEndpoint": "<uaa-url>/userinfo", "checkTokenEndpoint": "<uaa-url>/check_token", "scope": "openid,roles,user_attributes", "grantTypes": "implicit", "redirectUris": "<your app's route>/callback", "authorizationEndpoint": "<uaa-url>/oauth/authorize", "clientId": "HwykJoWyMNmJMLe93OgFiTxeOzYVMk7ff80v7ss87FwUJKIwsyzlM6vm2YVN4u9g", "clientSecret": "null", "accessTokenValidity": "14400", "tokenEndpoint": "<uaa-url>/oauth/token"}
 cf create-user-provided-service oauth2 -p $CREDENTIALS -t oauth2
